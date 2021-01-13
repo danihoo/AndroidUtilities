@@ -108,7 +108,7 @@ public abstract class AppAdapter<T extends Comparable<T>, V extends RecyclerView
     }
 
     public void refresh() {
-        clear();
+        objects.clear();
         populate();
     }
 
