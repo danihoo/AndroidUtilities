@@ -1,4 +1,4 @@
-package de.danihoo94.www.androidutilities;
+package de.danihoo94.www.androidutilities.view;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @SuppressWarnings({"unused", "RedundantSuppression"})
-public abstract class AppAdapter<T extends Comparable<T>, V extends RecyclerView.ViewHolder> extends RecyclerView.Adapter<V> {
+public abstract class AppAdapter<T extends Comparable<T>, VH extends RecyclerView.ViewHolder> extends RecyclerView.Adapter<VH> {
     @NonNull
     private final FragmentActivity activity;
     @NonNull

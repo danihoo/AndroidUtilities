@@ -1,4 +1,4 @@
-package de.danihoo94.www.androidutilities;
+package de.danihoo94.www.androidutilities.view;
 
 import android.content.Context;
 import android.util.AttributeSet;
