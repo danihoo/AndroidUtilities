@@ -80,11 +80,11 @@ public abstract class AppAdapter<T extends Comparable<T>, V extends RecyclerView
         }
 
         activity.runOnUiThread(() -> {
-                    notifyDataSetChanged();
-
                     // Cause recycler empty view to show up
                     if (getItemCount() == 0) {
                         notifyItemRemoved(0);
+                    } else {
+                        notifyDataSetChanged();
                     }
                 }
         );
@@ -98,10 +98,12 @@ public abstract class AppAdapter<T extends Comparable<T>, V extends RecyclerView
     public void remove(final int position) {
         objects.remove(position);
         activity.runOnUiThread(() -> {
+            notifyItemRemoved(position);
+
+            // Cause recycler empty view to show up
             if (position == objects.size()) {
                 notifyItemChanged(position - 1);
             }
-            notifyItemRemoved(position);
         });
     }
 
