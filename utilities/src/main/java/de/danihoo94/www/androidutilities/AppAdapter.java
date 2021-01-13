@@ -70,6 +70,7 @@ public abstract class AppAdapter<T extends Comparable<T>, V extends RecyclerView
                 if (o.compareTo(objects.get(i)) > 0) {
                     objects.add(i, o);
                     inserted = true;
+                    break;
                 }
             }
 
@@ -91,8 +92,7 @@ public abstract class AppAdapter<T extends Comparable<T>, V extends RecyclerView
 
     public void clear() {
         objects.clear();
-        activity.runOnUiThread(this::notifyDataSetChanged
-        );
+        activity.runOnUiThread(this::notifyDataSetChanged);
     }
 
     public void remove(final int position) {
