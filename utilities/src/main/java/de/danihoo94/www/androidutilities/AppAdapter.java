@@ -90,10 +90,8 @@ public abstract class AppAdapter<T extends Comparable<T>, V extends RecyclerView
     }
 
     public void clear() {
-        activity.runOnUiThread(() -> {
-                    objects.clear();
-                    notifyDataSetChanged();
-                }
+        objects.clear();
+        activity.runOnUiThread(this::notifyDataSetChanged
         );
     }
 
