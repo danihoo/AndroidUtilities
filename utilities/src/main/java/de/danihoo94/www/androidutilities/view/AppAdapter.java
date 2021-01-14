@@ -116,8 +116,11 @@ public abstract class AppAdapter<T extends Comparable<T>, VH extends RecyclerVie
         return objects.indexOf(o);
     }
 
-    public void replaceItem(int index, T o) {
-        objects.set(index, o);
+    public void replaceItem(int index, @NonNull T o) {
+        if (index >= 0 && index < objects.size()) {
+            objects.set(index, o);
+            getActivity().runOnUiThread(() -> notifyItemChanged(index));
+        }
     }
 
     public abstract void populate();
