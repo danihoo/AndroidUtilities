@@ -113,7 +113,12 @@ public abstract class AppAdapter<T extends Comparable<T>, VH extends RecyclerVie
     }
 
     public int getItemPosition(T o) {
-        return objects.indexOf(o);
+        for (int i = 0; i < objects.size(); i++) {
+            if (objects.get(i).equals(o)) {
+                return i;
+            }
+        }
+        return -1;
     }
 
     public void replaceItem(int index, @NonNull T o) {
