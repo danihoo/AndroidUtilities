@@ -112,6 +112,14 @@ public abstract class AppAdapter<T extends Comparable<T>, VH extends RecyclerVie
         populate();
     }
 
+    public int getItemPosition(T o) {
+        return objects.indexOf(o);
+    }
+
+    public void replaceItem(int index, T o) {
+        objects.set(index, o);
+    }
+
     public abstract void populate();
 
     @Override
