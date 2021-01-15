@@ -1,0 +1,104 @@
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt">
+    <aapt:attr name="android:drawable">
+        <vector
+            android:name="vector"
+            android:width="24dp"
+            android:height="24dp"
+            android:viewportWidth="24"
+            android:viewportHeight="24">
+            <path
+                android:name="path"
+                android:fillColor="@color/text_light_not_focused"
+                android:pathData="M 19 4 L 15.5 4 L 14.5 3 L 9.5 3 L 8.5 4 L 5 4 L 5 6 L 19 6 L 19 4 Z"
+                android:strokeWidth="1" />
+            <path
+                android:name="path_3"
+                android:fillColor="@color/text_light_not_focused"
+                android:pathData="M 6 7 L 18 7 L 18 8.92 L 6 11.58 Z" />
+            <path
+                android:name="path_1"
+                android:fillColor="@color/text_light_not_focused"
+                android:pathData="M 6 19 C 6 20.1 6.9 21 8 21 L 16 21 C 17.1 21 18 20.1 18 19 L 18 12.42 L 6 15.08 Z"
+                android:strokeWidth="1" />
+            <path
+                android:name="path_2"
+                android:fillColor="@color/text_light_not_focused"
+                android:pathData="M 1.875 13.5 L 1.875 15 L 22.125 10.5 L 22.125 9 Z"
+                android:strokeWidth="1" />
+        </vector>
+    </aapt:attr>
+    <target android:name="path">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                android:duration="300"
+                android:interpolator="@android:interpolator/fast_out_slow_in"
+                android:propertyName="fillColor"
+                android:valueFrom="@color/text_light_not_focused"
+                android:valueTo="#fff"
+                android:valueType="colorType" />
+        </aapt:attr>
+    </target>
+    <target android:name="path_3">
+        <aapt:attr name="android:animation">
+            <set>
+                <objectAnimator
+                    android:duration="190"
+                    android:interpolator="@android:interpolator/fast_out_slow_in"
+                    android:propertyName="pathData"
+                    android:startOffset="100"
+                    android:valueFrom="M 6 7 L 18 7 L 18 8.92 L 6 11.58 Z"
+                    android:valueTo="M 6 7 L 18 7 L 18 11.17 L 6 13.83 Z"
+                    android:valueType="pathType" />
+                <objectAnimator
+                    android:duration="300"
+                    android:interpolator="@android:interpolator/fast_out_slow_in"
+                    android:propertyName="fillColor"
+                    android:valueFrom="@color/text_light_not_focused"
+                    android:valueTo="#fff"
+                    android:valueType="colorType" />
+            </set>
+        </aapt:attr>
+    </target>
+    <target android:name="path_1">
+        <aapt:attr name="android:animation">
+            <set>
+                <objectAnimator
+                    android:duration="190"
+                    android:interpolator="@android:interpolator/fast_out_slow_in"
+                    android:propertyName="pathData"
+                    android:startOffset="100"
+                    android:valueFrom="M 6 19 C 6 20.1 6.9 21 8 21 L 16 21 C 17.1 21 18 20.1 18 19 L 18 12.42 L 6 15.08 Z"
+                    android:valueTo="M 6 19 C 6 20.1 6.9 21 8 21 L 16 21 C 17.1 21 18 20.1 18 19 L 18 10.17 L 6 12.83 Z"
+                    android:valueType="pathType" />
+                <objectAnimator
+                    android:duration="300"
+                    android:interpolator="@android:interpolator/fast_out_slow_in"
+                    android:propertyName="fillColor"
+                    android:valueFrom="@color/text_light_not_focused"
+                    android:valueTo="#fff"
+                    android:valueType="colorType" />
+            </set>
+        </aapt:attr>
+    </target>
+    <target android:name="path_2">
+        <aapt:attr name="android:animation">
+            <set>
+                <objectAnimator
+                    android:duration="300"
+                    android:interpolator="@android:interpolator/fast_out_slow_in"
+                    android:propertyName="pathData"
+                    android:valueFrom="M 1.875 13.5 L 1.875 15 L 22.125 10.5 L 22.125 9 Z"
+                    android:valueTo="M 1.875 14.25 L 1.875 14.25 L 1.875 14.25 L 1.875 14.25 Z"
+                    android:valueType="pathType" />
+                <objectAnimator
+                    android:duration="300"
+                    android:interpolator="@android:interpolator/fast_out_slow_in"
+                    android:propertyName="fillColor"
+                    android:valueFrom="@color/text_light_not_focused"
+                    android:valueTo="#fff"
+                    android:valueType="colorType" />
+            </set>
+        </aapt:attr>
+    </target>
+</animated-vector>

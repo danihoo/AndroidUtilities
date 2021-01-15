@@ -1,5 +1,6 @@
 package de.danihoo94.www.androidutilities.backend;
 
+@SuppressWarnings({"unused", "RedundantSuppression"})
 public class DataException extends Exception {
     // client error status
     public static final int STATUS_BAD_REQUEST = 400;
