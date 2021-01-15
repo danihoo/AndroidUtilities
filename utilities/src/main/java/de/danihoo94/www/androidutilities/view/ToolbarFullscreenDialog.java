@@ -25,13 +25,10 @@ import de.danihoo94.www.androidutilities.R;
 public abstract class ToolbarFullscreenDialog extends DialogFragment {
     public static final String ARG_PARENT = "parent";
 
-    public static final String ARG_NEW = "new";
-
     private static final int ANIMATION_DURATION_FADE = 500;
 
     protected Toolbar toolbar;
     protected String parentTag;
-    protected boolean isNew;
 
     public ToolbarFullscreenDialog() {
         // required empty constructor
@@ -71,10 +68,9 @@ public abstract class ToolbarFullscreenDialog extends DialogFragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        //setStyle(DialogFragment.STYLE_NORMAL, R.style.FullscreenDialogTheme);
+        setStyle(DialogFragment.STYLE_NORMAL, R.style.DialogTheme);
 
         this.parentTag = getArguments().getString(ARG_PARENT);
-        this.isNew = getArguments().getBoolean(ARG_NEW);
     }
 
     @Override
@@ -82,7 +78,6 @@ public abstract class ToolbarFullscreenDialog extends DialogFragment {
         super.onSaveInstanceState(outState);
 
         outState.putString(ARG_PARENT, parentTag);
-        outState.putBoolean(ARG_NEW, isNew);
     }
 
     private void setupToolbar() {

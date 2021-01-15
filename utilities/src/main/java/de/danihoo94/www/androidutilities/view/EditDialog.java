@@ -25,9 +25,24 @@ public abstract class EditDialog extends ToolbarFullscreenDialog implements Text
 
     private MenuItem saveAction;
     private MenuItem deleteAction;
+    protected boolean isNew;
 
     public EditDialog() {
         // required empty constructor
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        this.isNew = getArguments().getBoolean(ARG_NEW);
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        outState.putBoolean(ARG_NEW, isNew);
     }
 
     @Nullable
