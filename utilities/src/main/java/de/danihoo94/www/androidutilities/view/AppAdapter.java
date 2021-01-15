@@ -67,7 +67,7 @@ public abstract class AppAdapter<T extends Comparable<T>, VH extends RecyclerVie
             boolean inserted = false;
 
             for (int i = 0; i < objects.size(); i++) {
-                if (o.compareTo(objects.get(i)) > 0) {
+                if (!reverseOrder && o.compareTo(objects.get(i)) > 0 || reverseOrder && o.compareTo(objects.get(i)) < 0) {
                     objects.add(i, o);
                     inserted = true;
                     break;
