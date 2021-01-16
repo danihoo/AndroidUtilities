@@ -25,8 +25,6 @@ import de.danihoo94.www.androidutilities.R;
 public abstract class ToolbarFullscreenDialog extends DialogFragment {
     public static final String ARG_PARENT = "parent";
 
-    private static final int ANIMATION_DURATION_FADE = 500;
-
     protected Toolbar toolbar;
     protected String parentTag;
 
@@ -34,8 +32,12 @@ public abstract class ToolbarFullscreenDialog extends DialogFragment {
         // required empty constructor
     }
 
+    @Nullable
     public Fragment getParent() {
-        return getActivity().getSupportFragmentManager().findFragmentByTag(parentTag);
+        if (parentTag != null) {
+            return getActivity().getSupportFragmentManager().findFragmentByTag(parentTag);
+        }
+        return null;
     }
 
     @Nullable
@@ -70,14 +72,18 @@ public abstract class ToolbarFullscreenDialog extends DialogFragment {
 
         setStyle(DialogFragment.STYLE_NORMAL, R.style.DialogTheme);
 
-        this.parentTag = getArguments().getString(ARG_PARENT);
+        if (getArguments() != null) {
+            this.parentTag = getArguments().getString(ARG_PARENT);
+        }
     }
 
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
 
-        outState.putString(ARG_PARENT, parentTag);
+        if (parentTag != null) {
+            outState.putString(ARG_PARENT, parentTag);
+        }
     }
 
     private void setupToolbar() {
@@ -99,7 +105,7 @@ public abstract class ToolbarFullscreenDialog extends DialogFragment {
                         Animation.RELATIVE_TO_SELF, 0.5f,
                         Animation.RELATIVE_TO_SELF, 0.5f);
                 rotate.setInterpolator(new AccelerateDecelerateInterpolator());
-                rotate.setDuration(2 * ANIMATION_DURATION_FADE);
+                rotate.setDuration(2 * getResources().getInteger(R.integer.dialog_anim_time));
                 v.startAnimation(rotate);
                 break;
             }
@@ -119,7 +125,7 @@ public abstract class ToolbarFullscreenDialog extends DialogFragment {
         if (view != null) {
             AlphaAnimation fade = new AlphaAnimation(0f, 1f);
             fade.setInterpolator(new LinearInterpolator());
-            fade.setDuration(ANIMATION_DURATION_FADE);
+            fade.setDuration(getResources().getInteger(R.integer.dialog_anim_time));
             view.setText(title);
             view.startAnimation(fade);
         }
