@@ -13,6 +13,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import static de.danihoo94.www.androidutilities.backend.DataException.STATUS_AUTH_FAILURE;
 import static de.danihoo94.www.androidutilities.backend.DataException.STATUS_SERVER_ERROR;
@@ -74,7 +75,7 @@ public class RestRequest {
             }
         }
         // if this point of code is reached, all request attempts failed
-        throw lastException;
+        throw Objects.requireNonNull(lastException);
     }
 
     private JsonElement performRequest() throws DataException {

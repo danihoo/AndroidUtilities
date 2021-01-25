@@ -35,7 +35,7 @@ public abstract class EditDialog extends ToolbarFullscreenDialog implements Text
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        this.isNew = getArguments().getBoolean(ARG_NEW);
+        this.isNew = requireArguments().getBoolean(ARG_NEW);
     }
 
     @Override
@@ -82,12 +82,12 @@ public abstract class EditDialog extends ToolbarFullscreenDialog implements Text
     }
 
     private void setSaveEnabled(final boolean enabled) {
-        getActivity().runOnUiThread(() -> {
+        requireActivity().runOnUiThread(() -> {
             AnimatedVectorDrawableCompat drawable = null;
             if (enabled && !saveAction.isEnabled()) {
-                drawable = AnimatedVectorDrawableCompat.create(getActivity(), R.drawable.save_enable);
+                drawable = AnimatedVectorDrawableCompat.create(requireActivity(), R.drawable.save_enable);
             } else if (!enabled && saveAction.isEnabled()) {
-                drawable = AnimatedVectorDrawableCompat.create(getActivity(), R.drawable.save_disable);
+                drawable = AnimatedVectorDrawableCompat.create(requireActivity(), R.drawable.save_disable);
             }
 
             saveAction.setEnabled(enabled);
@@ -99,12 +99,12 @@ public abstract class EditDialog extends ToolbarFullscreenDialog implements Text
     }
 
     private void setDeleteEnabled(final boolean enabled) {
-        getActivity().runOnUiThread(() -> {
+        requireActivity().runOnUiThread(() -> {
             AnimatedVectorDrawableCompat drawable = null;
             if (enabled && !deleteAction.isEnabled()) {
-                drawable = AnimatedVectorDrawableCompat.create(getActivity(), R.drawable.delete_enable);
+                drawable = AnimatedVectorDrawableCompat.create(requireActivity(), R.drawable.delete_enable);
             } else if (!enabled && deleteAction.isEnabled()) {
-                drawable = AnimatedVectorDrawableCompat.create(getActivity(), R.drawable.delete_disable);
+                drawable = AnimatedVectorDrawableCompat.create(requireActivity(), R.drawable.delete_disable);
             }
 
             deleteAction.setEnabled(enabled);

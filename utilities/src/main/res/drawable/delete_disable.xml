@@ -35,7 +35,7 @@
                 android:interpolator="@android:interpolator/fast_out_slow_in"
                 android:propertyName="fillColor"
                 android:valueFrom="#fff"
-                android:valueTo="@color/text_light_not_focused"
+                android:valueTo="#7777aa"
                 android:valueType="colorType" />
         </aapt:attr>
     </target>
@@ -55,7 +55,7 @@
                     android:interpolator="@android:interpolator/fast_out_slow_in"
                     android:propertyName="fillColor"
                     android:valueFrom="#fff"
-                    android:valueTo="@color/text_light_not_focused"
+                    android:valueTo="#7777aa"
                     android:valueType="colorType" />
             </set>
         </aapt:attr>
@@ -76,7 +76,7 @@
                     android:interpolator="@android:interpolator/fast_out_slow_in"
                     android:propertyName="fillColor"
                     android:valueFrom="#fff"
-                    android:valueTo="@color/text_light_not_focused"
+                    android:valueTo="#7777aa"
                     android:valueType="colorType" />
             </set>
         </aapt:attr>
@@ -96,7 +96,7 @@
                     android:interpolator="@android:interpolator/fast_out_slow_in"
                     android:propertyName="fillColor"
                     android:valueFrom="#fff"
-                    android:valueTo="@color/text_light_not_focused"
+                    android:valueTo="#7777aa"
                     android:valueType="colorType" />
             </set>
         </aapt:attr>
