@@ -35,7 +35,7 @@ public abstract class ToolbarFullscreenDialog extends DialogFragment {
     @Nullable
     public Fragment getParent() {
         if (parentTag != null) {
-            return getActivity().getSupportFragmentManager().findFragmentByTag(parentTag);
+            return requireActivity().getSupportFragmentManager().findFragmentByTag(parentTag);
         }
         return null;
     }
@@ -59,7 +59,7 @@ public abstract class ToolbarFullscreenDialog extends DialogFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        getDialog().getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
+        requireDialog().getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
     }
 
     public void show(@NonNull FragmentManager fm) {
@@ -89,7 +89,7 @@ public abstract class ToolbarFullscreenDialog extends DialogFragment {
     private void setupToolbar() {
 
         // menu
-        onCreateOptionsMenu(toolbar.getMenu(), getActivity().getMenuInflater());
+        onCreateOptionsMenu(toolbar.getMenu(), requireActivity().getMenuInflater());
 
         // change title
         changeToolbarText(getTitle());
