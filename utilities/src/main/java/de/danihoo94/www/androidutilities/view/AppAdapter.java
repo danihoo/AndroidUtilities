@@ -58,12 +58,15 @@ public abstract class AppAdapter<T extends Comparable<T>, VH extends RecyclerVie
             }
         }
         objects.add(o);
-        activity.runOnUiThread(() -> {
-            if (objects.size() > 1) {
-                notifyItemChanged(objects.size() - 2);
-            }
-            notifyItemInserted(objects.size() - 1);
-        });
+
+        if (notify) {
+            activity.runOnUiThread(() -> {
+                if (objects.size() > 1) {
+                    notifyItemChanged(objects.size() - 2);
+                }
+                notifyItemInserted(objects.size() - 1);
+            });
+        }
     }
 
     public void addAll(T[] newObjects) {
