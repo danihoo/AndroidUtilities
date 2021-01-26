@@ -45,8 +45,12 @@ public abstract class AppAdapter<T extends Comparable<T>, VH extends RecyclerVie
     }
 
     public void add(final T o) {
+        add(o, true);
+    }
+
+    private void add(final T o, boolean notify) {
         for (int i = 0; i < objects.size(); i++) {
-            if (!reverseOrder && o.compareTo(objects.get(i)) > 0 || reverseOrder && o.compareTo(objects.get(i)) < 0) {
+            if (!reverseOrder && o.compareTo(objects.get(i)) < 0 || reverseOrder && o.compareTo(objects.get(i)) > 0) {
                 objects.add(i, o);
                 int finalI = i;
                 activity.runOnUiThread(() -> notifyItemInserted(finalI));
@@ -64,19 +68,7 @@ public abstract class AppAdapter<T extends Comparable<T>, VH extends RecyclerVie
 
     public void addAll(T[] newObjects) {
         for (T o : newObjects) {
-            boolean inserted = false;
-
-            for (int i = 0; i < objects.size(); i++) {
-                if (!reverseOrder && o.compareTo(objects.get(i)) > 0 || reverseOrder && o.compareTo(objects.get(i)) < 0) {
-                    objects.add(i, o);
-                    inserted = true;
-                    break;
-                }
-            }
-
-            if (!inserted) {
-                objects.add(o);
-            }
+            add(o, false);
         }
 
         activity.runOnUiThread(() -> {
