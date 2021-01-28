@@ -91,6 +91,10 @@ public class RestRequest {
                 con.setRequestProperty("Authorization", authorizationMethod + " " + authorization);
             }
 
+            for (Header h : customHeaders) {
+                con.setRequestProperty(h.type, h.value);
+            }
+
             // Write request body
             if (requestMethod.equals(REQUEST_METHOD_GET)) {
                 con.setRequestMethod(requestMethod);
@@ -105,10 +109,6 @@ public class RestRequest {
 
                 if (contentType != null) {
                     con.setRequestProperty("Content-Type", contentType);
-                }
-
-                for (Header h : customHeaders) {
-                    con.setRequestProperty(h.type, h.value);
                 }
 
                 OutputStreamWriter os = new OutputStreamWriter(con.getOutputStream());
