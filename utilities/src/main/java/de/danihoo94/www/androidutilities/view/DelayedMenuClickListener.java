@@ -23,7 +23,7 @@ public abstract class DelayedMenuClickListener implements MenuItem.OnMenuItemCli
     }
 
     @Override
-    public boolean onMenuItemClick(MenuItem item) {
+    public final boolean onMenuItemClick(MenuItem item) {
         long now = Calendar.getInstance().getTimeInMillis();
         if (now - delayMillis > lastClick) {
             lastClick = now;
@@ -32,5 +32,5 @@ public abstract class DelayedMenuClickListener implements MenuItem.OnMenuItemCli
         return false;
     }
 
-    protected abstract boolean performClick(MenuItem item);
+    public abstract boolean performClick(MenuItem item);
 }
