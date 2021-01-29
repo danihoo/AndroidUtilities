@@ -1,11 +1,11 @@
 package de.danihoo94.www.androidutilities.view;
 
-import android.view.View;
+import android.view.MenuItem;
 
 import java.util.Calendar;
 
 @SuppressWarnings({"unused", "RedundantSuppression"})
-public abstract class DelayedClickListener implements View.OnClickListener {
+public abstract class DelayedMenuClickListener implements MenuItem.OnMenuItemClickListener {
 
     public static final int DELAY_SHORT = 600;
     public static final int DELAY_MEDIUM = 1200;
@@ -14,22 +14,23 @@ public abstract class DelayedClickListener implements View.OnClickListener {
     private final long delayMillis;
     private long lastClick;
 
-    public DelayedClickListener() {
+    public DelayedMenuClickListener() {
         this.delayMillis = DELAY_MEDIUM;
     }
 
-    public DelayedClickListener(long delayMillis) {
+    public DelayedMenuClickListener(long delayMillis) {
         this.delayMillis = delayMillis;
     }
 
     @Override
-    public final void onClick(View v) {
+    public boolean onMenuItemClick(MenuItem item) {
         long now = Calendar.getInstance().getTimeInMillis();
         if (now - delayMillis > lastClick) {
             lastClick = now;
-            performClick(v);
+            return performClick(item);
         }
+        return false;
     }
 
-    protected abstract void performClick(View v);
+    protected abstract boolean performClick(MenuItem item);
 }
