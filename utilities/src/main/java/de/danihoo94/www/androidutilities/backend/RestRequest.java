@@ -28,6 +28,8 @@ public class RestRequest {
     public static final String REQUEST_METHOD_PATCH = "PATCH";
     public static final String REQUEST_METHOD_DELETE = "DELETE";
 
+    public static final String HEADER_AUTH = "Authorization";
+
     public static final String AUTH_METHOD_BEARER = "Bearer";
 
     // static attributes
@@ -88,7 +90,7 @@ public class RestRequest {
             con.setUseCaches(false);
             con.setRequestProperty("Accept", "*/*");
             if (authorization != null) {
-                con.setRequestProperty("Authorization", authorizationMethod + " " + authorization);
+                con.setRequestProperty(HEADER_AUTH, authorizationMethod + " " + authorization);
             }
 
             for (Header h : customHeaders) {
