@@ -10,12 +10,4 @@
         <item name="android:windowExitAnimation">@anim/fade_out</item>
     </style>
 
-    <style name="LoadDialogTheme">
-        <item name="background">@android:color/transparent</item>
-    </style>
-
-    <style name="LoadAnimation">
-        <item name="android:windowEnterAnimation">@anim/load_in</item>
-        <item name="android:windowExitAnimation">@anim/load_out</item>
-    </style>
 </resources>

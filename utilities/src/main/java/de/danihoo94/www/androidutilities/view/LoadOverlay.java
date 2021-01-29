@@ -28,7 +28,7 @@ public abstract class LoadOverlay extends DialogFragment {
         super.onViewCreated(view, savedInstanceState);
 
         setCancelable(false);
-        Objects.requireNonNull(requireDialog().getWindow()).getAttributes().windowAnimations = R.style.LoadAnimation;
+        Objects.requireNonNull(requireDialog().getWindow()).getAttributes().windowAnimations = R.style.DialogAnimation;
     }
 
     public void show(FragmentManager fm) {
