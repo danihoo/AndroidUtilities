@@ -37,6 +37,7 @@ public class RestRequest {
     // static attributes
     private final String urlBase;
     private final String urlExtension;
+    private final int timeoutInterval;
     private final String authorizationMethod;
     private final String authorization;
     private final String contentType;
@@ -47,16 +48,17 @@ public class RestRequest {
     private final JsonObject body;
 
     private RestRequest(Builder builder) {
-        urlBase = builder.urlBase;
-        urlExtension = builder.urlExtension;
-        authorizationMethod = builder.authorizationMethod;
-        authorization = builder.authorization;
-        contentType = builder.contentType;
-        customHeaders = builder.customHeaders;
-        requestMethod = builder.requestMethod;
-        retryAttempts = builder.retryAttempts;
-        retryCodes = builder.retryCodes;
-        body = builder.body;
+        this.urlBase = builder.urlBase;
+        this.urlExtension = builder.urlExtension;
+        this.authorizationMethod = builder.authorizationMethod;
+        this.timeoutInterval = builder.timeoutInterval;
+        this.authorization = builder.authorization;
+        this.contentType = builder.contentType;
+        this.customHeaders = builder.customHeaders;
+        this.requestMethod = builder.requestMethod;
+        this.retryAttempts = builder.retryAttempts;
+        this.retryCodes = builder.retryCodes;
+        this.body = builder.body;
     }
 
     public JsonElement perform() throws DataException {
@@ -96,6 +98,7 @@ public class RestRequest {
             URL url = new URL(urlBase + urlExtension);
 
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
+            con.setConnectTimeout(timeoutInterval);
             con.setUseCaches(false);
             con.setRequestProperty("Accept", "*/*");
             if (authorization != null) {
@@ -165,6 +168,7 @@ public class RestRequest {
 
         private String urlBase = null;
         private String urlExtension = "";
+        private int timeoutInterval = 30000;
         private String authorizationMethod = null;
         private String authorization = null;
         private String contentType = null;
@@ -189,6 +193,15 @@ public class RestRequest {
 
         public Builder setUrlExtension(String url) {
             this.urlExtension = url;
+            return this;
+        }
+
+        /**
+         * @param interval timeout interval in milliseconds, 0 for no timeout
+         * @return builder instance
+         */
+        public Builder setTimeoutInterval(int interval) {
+            this.timeoutInterval = interval;
             return this;
         }
 

@@ -30,7 +30,7 @@ public abstract class DelayedMenuClickListener implements MenuItem.OnMenuItemCli
             lastClick = now;
             return performClick(item);
         } else {
-            Log.i("info", "double click was catched");
+            Log.i("info", "double click was caught");
             return false;
         }
     }

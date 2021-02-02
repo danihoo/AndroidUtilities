@@ -30,7 +30,7 @@ public abstract class DelayedClickListener implements View.OnClickListener {
             lastClick = now;
             performClick(v);
         } else {
-            Log.i("info", "double click was catched");
+            Log.i("info", "double click was caught");
         }
     }
 
