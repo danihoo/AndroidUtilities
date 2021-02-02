@@ -1,5 +1,7 @@
 package de.danihoo94.www.androidutilities.backend;
 
+import android.util.Log;
+
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -63,16 +65,23 @@ public class RestRequest {
             try {
                 return performRequest();
             } catch (DataException e) {
+                boolean found = false;
                 for (int code : retryCodes) {
-                    boolean found = false;
                     if (e.getHtmlStatus() == code) {
                         found = true;
+                        break;
                     }
-                    if (!found) {
-                        throw e;
+                }
+                if (!found) {
+                    Log.w("warn", "request failed and will not be retried", e);
+                    throw e;
+                } else {
+                    if (i < retryAttempts) {
+                        Log.w("warn", "request failed and will be retried", e);
                     } else {
-                        lastException = e;
+                        Log.w("warn", "request failed and retry attempts reached maximum", e);
                     }
+                    lastException = e;
                 }
             }
         }

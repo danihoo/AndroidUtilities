@@ -1,5 +1,6 @@
 package de.danihoo94.www.androidutilities.view;
 
+import android.util.Log;
 import android.view.MenuItem;
 
 import java.util.Calendar;
@@ -28,8 +29,10 @@ public abstract class DelayedMenuClickListener implements MenuItem.OnMenuItemCli
         if (now - delayMillis > lastClick) {
             lastClick = now;
             return performClick(item);
+        } else {
+            Log.i("info", "double click was catched");
+            return false;
         }
-        return false;
     }
 
     public abstract boolean performClick(MenuItem item);

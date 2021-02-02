@@ -1,5 +1,6 @@
 package de.danihoo94.www.androidutilities.view;
 
+import android.util.Log;
 import android.view.View;
 
 import java.util.Calendar;
@@ -28,6 +29,8 @@ public abstract class DelayedClickListener implements View.OnClickListener {
         if (now - delayMillis > lastClick) {
             lastClick = now;
             performClick(v);
+        } else {
+            Log.i("info", "double click was catched");
         }
     }
 
