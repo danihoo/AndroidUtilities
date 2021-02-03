@@ -102,6 +102,10 @@ public abstract class AppAdapter<T extends Comparable<T>, VH extends RecyclerVie
         });
     }
 
+    public void remove(T object) {
+        remove(getItemPosition(object));
+    }
+
     public void refresh() {
         objects.clear();
         populate();
@@ -116,11 +120,15 @@ public abstract class AppAdapter<T extends Comparable<T>, VH extends RecyclerVie
         return -1;
     }
 
-    public void replaceItem(int index, @NonNull T o) {
+    public void replaceItem(int index, @NonNull T newObject) {
         if (index >= 0 && index < objects.size()) {
-            objects.set(index, o);
+            objects.set(index, newObject);
             getActivity().runOnUiThread(() -> notifyItemChanged(index));
         }
+    }
+
+    public void replaceItem(T old, T newObject) {
+        replaceItem(getItemPosition(old), newObject);
     }
 
     public abstract void populate();
