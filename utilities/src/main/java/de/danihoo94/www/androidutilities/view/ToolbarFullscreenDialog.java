@@ -63,7 +63,11 @@ public abstract class ToolbarFullscreenDialog extends DialogFragment {
     }
 
     public void show(@NonNull FragmentManager fm) {
-        super.show(fm, "fullscreen_dialog");
+        super.show(fm, getTagString());
+    }
+
+    protected String getTagString() {
+        return "fullscreenDialog";
     }
 
     @Override
