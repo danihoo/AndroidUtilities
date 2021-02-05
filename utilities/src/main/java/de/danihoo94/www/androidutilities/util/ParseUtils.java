@@ -14,7 +14,7 @@ import java.util.Objects;
 @SuppressWarnings({"unused", "RedundantSuppression"})
 public class ParseUtils {
 
-    static String parseNoDecimal(double d) {
+    public static String parseNoDecimal(double d) {
         NumberFormat numberFormatter = NumberFormat.getNumberInstance(Locale.getDefault());
         numberFormatter.setMinimumFractionDigits(0);
         numberFormatter.setMaximumFractionDigits(0);
